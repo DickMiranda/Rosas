@@ -1,0 +1,26 @@
+name: Pipeline HTML
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  validar-proyecto:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Descargar código
+        uses: actions/checkout@v4
+
+      - name: Verificar archivos
+        run: |
+          echo "Verificando proyecto..."
+          test -f index2.html
+          echo "index2.html encontrado correctamente"
+
+      - name: Pipeline completado
+        run: echo "Pipeline ejecutado correctamente"
